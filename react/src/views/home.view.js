@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 /**
  * Classes
  */
-import Main from '../class/main.class.js';
+//import Main from '../class/main.class.js';
 
 /**
  * Components

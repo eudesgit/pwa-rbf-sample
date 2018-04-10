@@ -66,7 +66,7 @@ class Products extends Component {
     render ( ) {
 
         let products = 'Loading products ...'
-        if (this.state.loading == false) {
+        if (this.state.loading === false) {
             products = this.render_products() 
         }
 
