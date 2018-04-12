@@ -3,3 +3,4 @@ functions/firebase.js
 react/src/firebase.js
 react/src/firebase.messaging.js
 react/build
+react/public/firebase-messaging-sw-config.js

@@ -6,6 +6,15 @@ import React, { Component } from 'react';
 //import Main from '../class/main.class.js';
 
 /**
+ * Google Firebase
+ */
+import firebase from '../firebase'   // Firebase config
+import 'firebase/firestore'          // Firestore
+import messaging from '../firebase.messaging'   // Firebase config
+
+
+
+/**
  * Components
  */
 import Products from '../components/products.component.js';
@@ -13,6 +22,87 @@ import AppFooter from '../components/app-footer.component.js';
 
 
 class HomeView extends Component {
+
+    constructor (props) {
+        super(props);
+
+        //TODO: Remove all this testing code from here
+
+        // Permission and token
+        messaging.requestPermission()
+        .then(function() {
+            console.log('Notification permission granted.');
+            // TODO(developer): Retrieve an Instance ID token for use with FCM.
+            // ...
+
+            return messaging.getToken()
+          })
+          .then((token) => {
+                if (token) {
+                    console.log(token)
+
+                    this.get_user_fsref().get()
+                    .then((doc) => {
+                        console.log(doc.data().device_tokens)
+
+                        var user_tokens = doc.data().device_tokens
+                        var is_token_added = false
+                        user_tokens.forEach(e => {
+                            if (e == token) {
+                                console.log('its there already')
+                                is_token_added = true
+                            }
+                        });
+
+                        console.log(is_token_added)
+                        if (!is_token_added) {  
+                            user_tokens.push(token)
+
+                            this.get_user_fsref().update({
+                                device_tokens: user_tokens
+                            })
+                            .then(function() {
+                                console.log("Token added");
+                            });
+                            
+                        }
+
+                        
+                     
+            
+                    })
+                    .catch(function(error) {
+                        console.error("Error: ", error);
+                    })
+
+
+                } else {
+                    console.log('No Instance ID token available. Request permission to generate one.')
+                }
+          })
+          .catch(function(err) {
+            console.log('Unable to get permission to notify.', err);
+          });
+
+
+
+          // Fetching notification
+          messaging.onMessage(function(payload) {
+            console.log('Message received. ', payload);
+            // ...
+          });
+
+
+
+
+
+
+    }
+
+    get_user_fsref ( ) {
+        let db = firebase.firestore()
+        return db.doc("users/1")
+    }
 
     render ( ) {
         return (
