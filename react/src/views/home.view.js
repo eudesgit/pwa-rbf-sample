@@ -48,7 +48,7 @@ class HomeView extends Component {
                         var user_tokens = doc.data().device_tokens
                         var is_token_added = false
                         user_tokens.forEach(e => {
-                            if (e == token) {
+                            if (e === token) {
                                 console.log('its there already')
                                 is_token_added = true
                             }
