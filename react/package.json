@@ -1,6 +1,5 @@
 {
   "name": "pwa-rbf-sample",
-  "homepage": "https://eudes.info/pwa",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
