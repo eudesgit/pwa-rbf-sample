@@ -1,6 +1,12 @@
-*/node_modules
-functions/firebase.js
-react/src/firebase.js
-react/src/firebase.messaging.js
-react/build
-react/public/firebase-messaging-sw-config.js
+# Node modules
+/*/node_modules
+
+# Firebase
+/firebase.json
+/.firebaserc
+/functions/firebase.js
+/react/src/firebase.js
+/react/src/firebase.messaging.js
+
+# React
+/react/build
