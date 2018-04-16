@@ -1,79 +1,98 @@
-const express = require('express')
-const express_app = express();
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-
-
-const config = require('./firebase')
-
-admin.initializeApp(config);
-
-
-
-//
-//
-// This code is messy and full of testing stuff :P
-//
-// TODO: sort this all out
-//
+/**
+ * Firebase Cloud Functions Index
+ * 
+ * One single functions to send a notification
+ */
 
 
 /**
- * HTTPS Send notification
+ * Firebase
  */
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 
-express_app.get('/user/:id', (req, res) => {
+/**
+ * Firebase config
+ * exports.config = { // App config }
+ */
+const config = require('./firebase')
+
+/**
+ * Firebase init
+ */
+admin.initializeApp(config);
+
+
+/**
+ * Express
+ * To deal with request params
+ */
+const express = require('express')
+const express_app = express();
+
+
+
+/***************** BEGIN FUNCTIONS *******************/
+ 
+
+ /**
+  * Send a sample notification to user devices
+  * 
+  * Endpoint: URL/user/id
+  * 
+  * @since      1.0.0
+  * @param      id      User ID
+  * @return     string  Success message
+  */
+ express_app.get('/user/:id', (req, res) => {
+
+    let function_return = {
+        success: false,
+        error: "",
+        data: "",
+    }
 
     var id_user = req.params.id
 
-    if (id_user > 0) {
+    // Checks the id
+    if (id_user <= 0) {
 
-        console.log("got here")
+        function_return.error = 'Wrong param'
+        console.error(function_return.error)
+        return res.json(function_return)
 
+    } else {
+
+        // Gets users' devices
         admin.firestore().collection('users').doc(id_user).get()
-        .then(doc => {
-            console.log(doc.data())
+        .then((doc) => {
 
             user_devices = doc.data().device_tokens
 
-            console.log(user_devices)
-
+            // Sample notification
             var message = {
                 data: {
-                  status: "happy with that"
+                    status: "Happy notification!"
                 },
-              };
+            }
 
-            
-              console.log(message)
-
-
-              return admin.messaging().sendToDevice(user_devices, message)
-              .then(function(response) {
-                // See the MessagingDevicesResponse reference documentation for
-                // the contents of response.
-                console.log('Successfully sent message:', response);
-
-                return res.send("Success")
-
-              })
-              .catch(function(error) {
-                console.log('Error sending message:', error);
-              });
-
-
-            
+            return admin.messaging().sendToDevice(user_devices, message)
         })
-        .catch(function(error) {
-            console.error("Error: ", error);
+        .then((response) => {
+            console.log('Successfully sent message:', response)
+        
+            function_return.success = true
+            function_return.data = 'Notification sent'
+            return res.json(function_return)
         })
-
-    } else {
-        res.send("wrong param") 
+        .catch((error) => {
+            console.error('Error sending message:', error);
+        })
     }
 
+    return true
+})
 
-});
 exports.send_notification_to_devices = functions.https.onRequest(express_app)
 
 
@@ -81,54 +100,64 @@ exports.send_notification_to_devices = functions.https.onRequest(express_app)
 
 
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   response.send("Hello from Firebase! Hey there.");
-// });
 
 
 
-// exports.hello_world = functions.https.onCall((data, response) => {
-//     return {
-//         data: "Hello from Firebase! I was called."
+
+
+
+
+
+
+// express_app.get('/user/:id', (req, res) => {
+
+//     let function_return = {
+//         success: false,
+//         error: "",
+//         data: "",
 //     }
-// });
 
+//     var id_user = req.params.id
 
+//     // Checks the id
+//     if (id_user <= 0) {
 
-exports.send_test_notification = functions.https.onCall((data, response) => {
+//         function_return.error = 'Wrong param'
+//         console.error(function_return.error)
+//         return res.json(function_return)
 
+//     } else {
 
-// This registration token comes from the client FCM SDKs.
-var registrationToken = 'dc6XeaKc47Y:APA91bFWw7Vg6JG_yxGx4lqDMmP9cIRL9QDqHfubkPxkkW0GkXlceX54wPuj7MbL5s3_if1cqyXG5v09aD8NQUi7eNXh7VQKp6H3tTlPmDyYy4NH7B8uBxCbiA88CbKIPa5Zoz4g9M_3';
+//         // Gets users' devices
+//         admin.firestore().collection('users').doc(id_user).get()
+//         .then((doc) => {
 
-// See documentation on defining a message payload.
-var message = {
-  data: {
-    status: "happy with that"
-  },
-  token: registrationToken
-};
+//             user_devices = doc.data().device_tokens
 
-// Send a message to the device corresponding to the provided
-// registration token.
-admin.messaging().send(message)
-  .then((response) => {
-    // Response is a message ID string.
-    console.log('Successfully sent message:', response);
+//             // Sample notification
+//             var message = {
+//                 data: {
+//                     status: "Happy notification!"
+//                 },
+//             }
 
-    return {
-        data: "SENT!"
-    }
+//             return admin.messaging().sendToDevice(user_devices, message)
+//             .then((response) => {
+//                 console.log('Successfully sent message:', response)
 
+//                 function_return.success = true
+//                 function_return.data = 'Notification sent'
+//                 return res.json(function_return)
+//             })
+//             .catch((error) => {
+//                 console.error('Error sending message:', error);
+//             })
 
-  })
-  .catch((error) => {
-    console.log('Error sending message:', error);
-  });
+//         })
+//         .catch((error) => {
+//             console.error("Error getting data: ", error);
+//         })
 
-
-
-});
+//     }
+// })
+// exports.send_notification_to_devices = functions.https.onRequest(express_app)
