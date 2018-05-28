@@ -1,3 +1,4 @@
-react/node_modules
+*/node_modules
 react/src/firebase.js
+react/src/firebase.messaging.js
 react/build
