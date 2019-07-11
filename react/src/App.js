@@ -1,3 +1,6 @@
+/**
+ * App Home index
+ */
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -5,7 +8,7 @@ import './App.css';
 /**
  * Bootstrap
  */
-import './bootstrap-4.0.0/css/bootstrap.min.css';
+// import './bootstrap-4.0.0/css/bootstrap.min.css'; // Added by NPM
 
 /**
  * Components
@@ -39,9 +42,9 @@ class App extends Component {
                 {/* Basename for apps running on subdirectory basename={process.env.PUBLIC_URL}   */}
                 <Router> 
                     <Switch>
-                            <Route exact path="/" component={HomeView}/>
-                            <Route exact path="/checkout" component={Checkout}/>
-                            <Route exact path="/checkout/:id" component={Checkout}/>
+                        <Route exact path="/" component={HomeView}/>
+                        <Route exact path="/checkout" component={Checkout}/>
+                        <Route exact path="/checkout/:id" component={Checkout}/>
                     </Switch>
                 </Router>
             </div>

@@ -3,6 +3,12 @@ pwa-rbf-sample
 
 A sample of a Progressive Web App using React; Bootstrap and Firebase's Cloud Firestore and Cloud Functions.
 
+## Dependencies
+
+### Bootstrap 4
+
+The best CSS framework is added by NPM and we use its CSS only. It's the easiest and lightest way avoiding React components that are too heavy and complex to customise. You have full control of Bootstrap's classes.
+
 ## Set up
 
 ### Set up Firebase Firestore
