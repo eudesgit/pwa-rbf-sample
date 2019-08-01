@@ -1,12 +1,17 @@
 # Node modules
 /*/node_modules
 
-# Firebase
-/firebase.json
-/.firebaserc
+# React
+/react/build
+
+# Firebase Functions
 /functions/firebase.js
+
+# Firebase React Scripts
 /react/src/firebase.js
 /react/src/firebase.messaging.js
 
-# React
-/react/build
+# Firebase general config (Hosting and others)
+/firebase.json
+/.firebaserc
+/.firebase
