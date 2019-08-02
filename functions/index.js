@@ -38,7 +38,7 @@ const express_app = express();
  /**
   * Send a sample notification to user devices
   * 
-  * Endpoint: URL/user/id
+  * Endpoint: URL/send_notification_to_devices/user/id
   * 
   * @since      1.0.0
   * @param      id      User ID

@@ -24,9 +24,18 @@ class HomeView extends Component {
     constructor (props) {
         super(props)
 
+        /*
+         * Sets up notification permission and saves token
+         */
         let n = new Notification()
         n.setup_permission()
+        .then((token) => {
+            console.log('Notification permission is set up', token)  
+        })
         
+        /*
+         * Fetches notification
+         */
         messaging.onMessage(function(payload) {
             console.log('Notification received', payload)
         })
