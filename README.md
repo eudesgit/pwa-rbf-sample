@@ -11,7 +11,7 @@ The best CSS framework is added by NPM and we use its CSS only. It's the easiest
 
 ## Set up
 
-### Set up Firebase Firestore
+### Set up Firebase Firestore data
 
 You'll need two collections (Products and Users) for this sample app.
 
@@ -53,10 +53,12 @@ var config = {
     messagingSenderId: ""
 };
 
-var fb = firebase.initializeApp(config);
+firebase.initializeApp(config);
 
-export default fb;
+export default firebase;
 ```
+
+Read more: https://firebase.google.com/docs/firestore/quickstart
 
 ### Set up Firebase Messaging config file
 
@@ -71,6 +73,12 @@ messaging.usePublicVapidKey("### Thy Key ###");
 
 export default messaging;
 ```
+
+### Firebase Hosting
+
+In case you want to publish this on Firebase Hosting, you just need to init Firebase to this projects home folder. It's going to create two files that are already ignored by Git. Set the Hosting public folder to react/build and you're ready to run.
+
+Read more: https://firebase.google.com/docs/hosting/quickstart
 
 ### More steps
 
