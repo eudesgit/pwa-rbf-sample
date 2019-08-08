@@ -7,8 +7,8 @@
 /*
  * Google Firebase
  */
-import firebase from '../firebase'   // Firebase config
-import 'firebase/firestore'          // Firestore
+// import firebase from '../firebase'   // Firebase config
+//import 'firebase/firestore'          // Firestore
 
 /*
  * Classes 

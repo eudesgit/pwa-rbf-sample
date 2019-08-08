@@ -8,9 +8,9 @@ import Notification from '../lib/notification.class.js';
 /**
  * Google Firebase
  */
-import firebase from '../firebase'   // Firebase config
-import 'firebase/firestore'          // Firestore
-import messaging from '../firebase.messaging'   // Firebase config
+//import firebase from '../firebase'   // Firebase config
+//import 'firebase/firestore'          // Firestore
+//import messaging from '../firebase.messaging'   // Firebase config
 
 /**
  * Components
@@ -35,10 +35,11 @@ class HomeView extends Component {
         
         /*
          * Fetches notification
+         * Test
          */
-        messaging.onMessage(function(payload) {
-            console.log('Notification received', payload)
-        })
+        // messaging.onMessage(function(payload) {
+        //     console.log('Notification received', payload)
+        // })
 
         // Permission and token
         // messaging.requestPermission()

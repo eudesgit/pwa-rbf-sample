@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-
-import firebase from '../firebase'   // Firebase config
-import '@firebase/functions'          // Functions
+//import firebase from '../firebase'   // Firebase config
+//import '@firebase/functions'          // Functions
 
 
 /**
@@ -17,11 +16,11 @@ class Checkout extends Component {
     constructor (props) {
         super(props)
 
-        var addMessage = firebase.functions().httpsCallable('send_test_notification');
+        // var addMessage = firebase.functions().httpsCallable('send_test_notification');
 
-        addMessage().then(function(result) {
-            console.log(result)
-        });
+        // addMessage().then(function(result) {
+        //     console.log(result)
+        // });
     }
 
     get_url_id ( ) {
