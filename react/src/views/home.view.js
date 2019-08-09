@@ -13,10 +13,14 @@ import Notification from '../lib/notification.class.js';
 //import messaging from '../firebase.messaging'   // Firebase config
 
 /**
+ * Elements
+ */
+import AppFooter from '../components/elements/AppFooter'
+
+/**
  * Components
  */
 import Products from '../components/products.component.js';
-import AppFooter from '../components/app-footer.component.js';
 
 
 class HomeView extends Component {
@@ -127,8 +131,6 @@ class HomeView extends Component {
                 <div className="container">
                     <Products />
                 </div>
-
-                <AppFooter />
             </div> 
         );
     }

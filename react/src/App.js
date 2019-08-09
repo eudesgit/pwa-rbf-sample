@@ -11,6 +11,11 @@ import './App.css';
 // import './bootstrap-4.0.0/css/bootstrap.min.css'; // Added by NPM
 
 /**
+ * Elements
+ */
+import AppFooter from './components/elements/AppFooter'
+
+/**
  * Components
  */
 import TopNav from './components/top-nav.component.js';
@@ -47,6 +52,7 @@ class App extends Component {
                         <Route exact path="/checkout/:id" component={Checkout}/>
                     </Switch>
                 </Router>
+                <AppFooter />
             </div>
         );
     }

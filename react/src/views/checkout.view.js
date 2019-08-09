@@ -3,13 +3,17 @@ import React, { Component } from 'react';
 //import firebase from '../firebase'   // Firebase config
 //import '@firebase/functions'          // Functions
 
+/**
+ * Elements
+ */
+import AppFooter from '../components/elements/AppFooter'
 
 /**
  * Components
  */
 import Cart from '../components/cart.component.js';
 import CheckoutForm from '../components/checkout-form.component.js';
-import AppFooter from '../components/app-footer.component.js';
+
 
 class Checkout extends Component {
 
@@ -47,9 +51,6 @@ class Checkout extends Component {
                     </div>{/* END col */}
 
                 </div>{/* END row */}
-
-                <AppFooter />
-
             {/* END container */}
             </div>
         );
