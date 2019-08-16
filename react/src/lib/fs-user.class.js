@@ -92,6 +92,24 @@ class FS_User {
 
     }
 
+    /**
+     * Insert product to user's cart
+     * 
+     * @param {object} data 
+     * @see https://firebase.google.com/docs/firestore/manage-data/add-data?authuser=0#add_a_document
+     */
+    insert_cart ( data ) {
+
+        return this.get_fsref().collection('cart').add(data)
+        .then((inserted_doc) => {
+            return inserted_doc
+        })
+        .catch(function(e) {
+            console.error('Unable to get user cart', e)
+        })
+
+    }
+
 }
 
 export default FS_User
