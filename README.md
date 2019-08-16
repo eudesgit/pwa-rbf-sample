@@ -31,7 +31,7 @@ db.collection('users').add({
     ],
     collection('cart').add({
         name: 'Product Name', // string
-        ref_product: db.collection('products') ref // collection products ref
+        ref_product: db.collection('products') reference // collection products reference
     })
 })
 ```
