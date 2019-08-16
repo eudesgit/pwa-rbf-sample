@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-/**
- * Classes
+/*
+ * Lib
  */
 import Notification from '../lib/notification.class.js';
 
@@ -15,7 +15,8 @@ import Notification from '../lib/notification.class.js';
 /**
  * Elements
  */
-import AppFooter from '../components/elements/AppFooter'
+// import AppFooter from '../components/elements/AppFooter'
+// import BigButton from '../components/elements/BigButton'
 
 /**
  * Components
