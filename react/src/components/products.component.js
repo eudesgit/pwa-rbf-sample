@@ -6,10 +6,11 @@ import React, { Component } from 'react';
 import firebase from '../firebase'   // Firebase config
 import 'firebase/firestore'          // Firestore
 
-/**
+/*
  * Components
  */
-import ProductBox from '../components/product-box.component.js';
+// import ProductBox from '../components/product-box.component.js';
+import ProductBox from '../components/blocks/ProductBox'
 
 class Products extends Component {
 
