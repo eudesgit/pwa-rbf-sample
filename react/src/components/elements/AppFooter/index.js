@@ -2,6 +2,9 @@
  * AppFooter
  * 
  * Footer element
+ * 
+ * @version 1.0.0
+ * @since 1.0.0
  */
 
 import React, { Component } from 'react'
