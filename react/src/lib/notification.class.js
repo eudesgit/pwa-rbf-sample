@@ -7,7 +7,7 @@
 /*
  * Google Firebase
  */
-import messaging from '../firebase.messaging'   // Firebase config
+import messaging from '../firebase.messaging'   // Firebase messaging config
 
 /*
  * Classes 

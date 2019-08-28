@@ -14,11 +14,12 @@ import './App.css';
  * Elements
  */
 import AppFooter from './components/elements/AppFooter'
+import AppBar from './components/elements/AppBar'
 
 /**
  * Components
  */
-import TopNav from './components/top-nav.component.js';
+// import TopNav from './components/top-nav.component.js';
 
 /**
  * Views
@@ -28,22 +29,22 @@ import Checkout from './views/checkout.view.js';
 
 class App extends Component {
 
-    constructor (props) {
-        super(props)
+    // constructor (props) {
+        // super(props)
 
-        this.load_menu_items()
-    }
+        // this.load_menu_items()
+    // }
 
-    load_menu_items ( ) {
-        this.menu_items = [
-            'Features', 'Enterprise', 'Support', 'Price'
-        ]
-    }
+    // load_menu_items ( ) { 
+    //     this.menu_items = [
+    //         'Features', 'Enterprise', 'Support', 'Price'
+    //     ]
+    // }
 
     render() {
         return (
             <div className="App">
-                <TopNav items={this.menu_items} />
+                <AppBar />
                 {/* Basename for apps running on subdirectory basename={process.env.PUBLIC_URL}   */}
                 <Router> 
                     <Switch>

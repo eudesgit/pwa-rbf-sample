@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 /**
  * Elements
  */
-import AppFooter from '../components/elements/AppFooter'
+// import AppFooter from '../components/elements/AppFooter'
 
 /**
  * Components

@@ -35,7 +35,7 @@ class FS_Notification_Token {
             this.token = token
         }
 
-        if (this.token == '') throw new Error('Token is empty')
+        if (this.token === '') throw new Error('Token is empty')
 
         return this.sample_user.insert_notification_token(this.token)
         .then((token) => {

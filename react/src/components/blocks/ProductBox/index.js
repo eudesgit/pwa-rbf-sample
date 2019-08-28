@@ -40,7 +40,10 @@ class ProductBox extends Component {
         }
 
         this.sample_user = new FS_User(1) // Sample user (user 1) from database
-        this.load_user_cart_product()
+    }
+
+    componentDidMount ( ) {
+        this.load_user_cart_product() 
     }
 
     render ( ) {
