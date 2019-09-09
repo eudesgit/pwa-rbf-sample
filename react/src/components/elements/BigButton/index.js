@@ -26,9 +26,11 @@ class BigButton extends Component {
         let { active, ...props } = this.props
         let button_classes = 'btn btn-lg btn-block btn-outline-primary'
 
-        if (this.props.active === true) {
-            button_classes += ' active'
-        }
+        // if (this.props.active === true) {
+        //     button_classes += ' active'
+        // }
+
+        button_classes += this.props.active ? ' active' : ''
 
         return <button className={button_classes} {...props}>{this.props.children}</button>
     }
