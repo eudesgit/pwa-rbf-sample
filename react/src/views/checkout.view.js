@@ -8,10 +8,15 @@ import React, { Component } from 'react';
  */
 // import AppFooter from '../components/elements/AppFooter'
 
+/*
+ * Blocks 
+ */
+import CartBox from '../components/blocks/CartBox';
+
 /**
  * Components
  */
-import Cart from '../components/cart.component.js';
+// import Cart from '../components/cart.component.js';
 import CheckoutForm from '../components/checkout-form.component.js';
 
 
@@ -28,7 +33,7 @@ class Checkout extends Component {
     }
 
     get_url_id ( ) {
-        return this.props.match.params.id
+        return parseInt(this.props.match.params.id)
     }
 
     render() {
@@ -43,7 +48,7 @@ class Checkout extends Component {
 
                 <div className="row">
                     <div className="col-md-4 order-md-2 mb-4">
-                        <Cart client_id={this.get_url_id()} />
+                        <CartBox client_id={this.get_url_id()} />
                     </div>{/* END col */}
 
                     <div className="col-md-8 order-md-1">
