@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
 /*
  * Lib
  */
-import FS_User from '../../../lib/fs-user.class.js';
+import FS_User from '../../../lib/fs-user.class.js'
 
 /*
  * Elements
@@ -27,6 +27,7 @@ class ProductBox extends Component {
         name: PropTypes.string,
         price: PropTypes.string,
         desc: PropTypes.string,
+        in_cart: PropTypes.bool,
         fsref: PropTypes.object, // FS Product reference
     }
 
@@ -36,15 +37,13 @@ class ProductBox extends Component {
         super(props)
 
         this.state = {
-            is_added: false,
+            is_added: this.props.in_cart,
         }
-
-        this.sample_user = new FS_User(1) // Sample user (user 1) from database
     }
 
-    componentDidMount ( ) {
-        this.load_user_cart_product() 
-    }
+    // componentDidMount ( ) {
+    //     this.load_user_cart_product() 
+    // }
 
     render ( ) {
         return (
@@ -78,6 +77,8 @@ class ProductBox extends Component {
      */
     add_product_to_cart ( ) {
 
+        this.sample_user = new FS_User(1) // Sample user (user 1) from database
+
         this.sample_user.insert_cart({
             ref_product: this.props.fsref,
             name: this.props.name,
@@ -92,14 +93,14 @@ class ProductBox extends Component {
      * Search the product on client's cart
      * and set the state
      */
-    load_user_cart_product ( ) {
-        this.sample_user.select_cart(this.props.fsref).then(snapshot => {
-            snapshot.forEach(doc => {
-                // console.log('cart', this.props.name, doc.data().name, doc)
-                this.setState({is_added: true})
-            })
-        })
-    }
+    // load_user_cart_product ( ) {
+    //     this.sample_user.select_cart(this.props.fsref).then(snapshot => {
+    //         snapshot.forEach(doc => {
+    //             // console.log('cart', this.props.name, doc.data().name, doc)
+    //             this.setState({is_added: true})
+    //         })
+    //     })
+    // }
 
 }
 

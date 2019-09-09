@@ -21,7 +21,12 @@ import Notification from '../lib/notification.class.js';
 /**
  * Components
  */
-import Products from '../components/products.component.js';
+//import Products from '../components/products.component.js';
+
+/*
+ * Blocks
+ */
+import ProductsSection from '../components/blocks/ProductsSection'
 
 
 class HomeView extends Component {
@@ -130,7 +135,7 @@ class HomeView extends Component {
                 </div>
 
                 <div className="container">
-                    <Products />
+                    <ProductsSection />
                 </div>
             </div> 
         );
