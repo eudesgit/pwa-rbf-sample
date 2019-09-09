@@ -14,7 +14,7 @@ import './App.css';
  * Elements
  */
 import AppFooter from './components/elements/AppFooter'
-import AppBar from './components/elements/AppBar'
+import AppBar from './components/blocks/AppBar'
 
 /**
  * Components
